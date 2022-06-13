@@ -1,4 +1,4 @@
-# SUNRISE 2022 Research Cruise data processing and quality control code
+ SUNRISE 2022 Research Cruise data processing and quality control code
 
 ## This directory contains the code required to analysis the data, and the data tree structure
 
