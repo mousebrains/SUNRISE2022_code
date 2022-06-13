@@ -1,7 +1,6 @@
 # SUNRISE 2022 Research Cruise data processing and quality control code
 
-## This directory contains the code required to analysis the data. 
-## And the data tree structure
+## This directory contains the code required to analysis the data, and the data tree structure
 
 There are two branches to this code, one for the Pelican and the other for the Point Sur. After the cruise, we merge the two branches into a single Shore branch. 
 
