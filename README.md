@@ -1,8 +1,7 @@
-# SUNRISE-data-processing code
+# SUNRISE 2022 Research Cruise data processing and quality control code
 
-SUNRISE data processing and quality control code
-
-For data please see: [SUNRISE 2022 data](https://github.com/mousebrains/SUNRISE2022_data)
+## This directory contains the code required to analysis the data. 
+## And the data tree structure
 
 ## Useful External Repositores
 
