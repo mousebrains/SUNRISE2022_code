@@ -1,5 +1,8 @@
-# SUNRISE-data-processing
-SUNRISE data processing and quality control
+# SUNRISE-data-processing code
+
+SUNRISE data processing and quality control code
+
+for data please see: [SUNRISE_2022 data](https://github.com/mousebrains/SUNRISE2022_data)
 
 ## Useful External Repositores
 
