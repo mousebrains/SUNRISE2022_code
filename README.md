@@ -1,4 +1,4 @@
-# SUNRISE 2022 Research Cruise data processing and quality control code
+ SUNRISE 2022 Research Cruise data processing and quality control code
 
 ## This directory contains the code required to analysis the data, and the data tree structure
 
@@ -6,19 +6,19 @@ There are two branches to this code, one for the Pelican and the other for the P
 
 To check out the code for the Pelican branch, please do the following from the command line:
 
-`
-git clone git@github.com:mousebrains/SUNRISE2022_code.git code
-cd code
-git checkout pelican
-`
+`git clone git@github.com:mousebrains/SUNRISE2022_code.git code`
+
+`cd code`
+
+`git checkout pelican`
 
 To check out the code for the Point Sur branch, please do the following from the command line:
 
-`
-git clone git@github.com:mousebrains/SUNRISE2022_code.git code
-cd code
-git checkout pointsur
-`
+`git clone git@github.com:mousebrains/SUNRISE2022_code.git code`
+
+`cd code`
+
+`git checkout pointsur`
 
 There is a [github desktop client](https://desktop.github.com)
 
