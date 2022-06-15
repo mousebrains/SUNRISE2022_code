@@ -1,0 +1,236 @@
+---
+  # this yaml file defines defaults for the sectionGenerator
+  # you can toggle which instruments are included in your sections and
+  # which variables
+  # N.B. yes. on. True are aliases for true and no, off, False are aliases
+  # for false
+
+  # Pelican 1200khz ADCP
+  ADCP_PE_1200: yes
+  ADCP_PE_1200_filepath: 'C:\Users\hildi\Documents\Stanford\Research\SUNRISE2022\testdata\wh1200.nc'
+  ADCP_PE_1200_variables:
+    trajectory: no
+    time: yes
+    lon: yes
+    lat: yes
+    depth: yes
+    dn: yes # this is a derived variable not included in the netcdf
+    u: yes
+    v: yes
+    amp: no
+    pg: no
+    pflag: no
+    heading: no
+    tr_temp: no
+    num_pings: no
+    uship: no
+    vship: no
+
+  # Pelican 600khz ADCP
+  ADCP_PE_600: yes
+  ADCP_PE_600_filepath: 'C:\Users\hildi\Documents\Stanford\Research\SUNRISE2022\testdata\wh1200.nc'
+  ADCP_PE_600_variables:
+    trajectory: no
+    time: yes
+    lon: yes
+    lat: yes
+    depth: yes
+    dn: yes # this is a derived variable not included in the netcdf
+    u: yes
+    v: yes
+    amp: no
+    pg: no
+    pflag: no
+    heading: no
+    tr_temp: no
+    num_pings: no
+    uship: no
+    vship: no
+
+  # Pelican 300khz ADCP
+  ADCP_PE_300: yes
+  ADCP_PE_300_filepath: 'C:\Users\hildi\Documents\Stanford\Research\SUNRISE2022\testdata\wh1200.nc'
+  ADCP_PE_300_variables:
+    trajectory: no
+    time: yes
+    lon: yes
+    lat: yes
+    depth: yes
+    dn: yes # this is a derived variable not included in the netcdf
+    u: yes
+    v: yes
+    amp: no
+    pg: no
+    pflag: no
+    heading: no
+    tr_temp: no
+    num_pings: no
+    uship: no
+    vship: no
+
+  # Pelican VMP/CTD
+  HYDRO_PE: yes
+  HYDRO_PE_filepath: 'C:\Users\hildi\Documents\Stanford\Research\SUNRISE2022\testdata\SUNRISE2021_PE_HydroCombo_Processed.nc'
+  HYDRO_PE_variables:
+    DO2A: yes
+    DO2R: yes
+    Fl: yes
+    SA: yes
+    SP: yes
+    ToB: yes
+    Turbi: yes
+    dist: no
+    dn: yes
+    epsi: yes
+    lat: yes
+    lon: yes
+    sigma: yes
+    tau: yes
+    theta: yes
+    u_star: no
+    u_star_cint: no
+
+  # Pelican FTMET
+  FTMET_PE: yes
+  FTMET_PE_filepath: ''
+  FTMET_PE_variables:
+    t: yes
+    dn: yes # this is a derived variable not in the netcdf
+    longitude: yes
+    latitude: yes
+    headingGyro: yes
+    headingGPS: yes
+    waterDepth: yes
+    waterTemperature: yes
+    salinity: yes
+    conductivity: yes
+    speedOfSound: yes
+    chlorophyll: yes
+    fluorometer: yes
+    airTemp1: yes
+    airTemp2: no
+    airPressure1: yes
+    airPressure2: no
+    relHumidity1: yes
+    relHumidity2: no
+    windSpdRel1: yes
+    windSpdRel2: no
+    windDirRel1: yes
+    windDirRel2: no
+    shortWave: yes
+    longWave: yes
+
+  # Point Sur 1200khz ADCP
+  ADCP_PS_1200: yes
+  ADCP_PS_1200_filepath: 'C:\Users\hildi\Documents\Stanford\Research\SUNRISE2022\testdata\wh1200.nc'
+  ADCP_PS_1200_variables:
+    trajectory: no
+    time: yes
+    lon: yes
+    lat: yes
+    depth: yes
+    dn: yes # this is a derived variable not included in the netcdf
+    u: yes
+    v: yes
+    amp: no
+    pg: no
+    pflag: no
+    heading: no
+    tr_temp: no
+    num_pings: no
+    uship: no
+    vship: no
+
+  # Point Sur 600khz ADCP
+  ADCP_PS_600: yes
+  ADCP_PS_600_filepath: 'C:\Users\hildi\Documents\Stanford\Research\SUNRISE2022\testdata\wh1200.nc'
+  ADCP_PS_600_variables:
+    trajectory: no
+    time: yes
+    lon: yes
+    lat: yes
+    depth: yes
+    dn: yes # this is a derived variable not included in the netcdf
+    u: yes
+    v: yes
+    amp: no
+    pg: no
+    pflag: no
+    heading: no
+    tr_temp: no
+    num_pings: no
+    uship: no
+    vship: no
+
+  # Point Sur 300khz ADCP
+  ADCP_PS_300: yes
+  ADCP_PS_300_filepath: 'C:\Users\hildi\Documents\Stanford\Research\SUNRISE2022\testdata\wh1200.nc'
+  ADCP_PS_300_variables:
+    trajectory: no
+    time: yes
+    lon: yes
+    lat: yes
+    depth: yes
+    dn: yes # this is a derived variable not included in the netcdf
+    u: yes
+    v: yes
+    amp: no
+    pg: no
+    pflag: no
+    heading: no
+    tr_temp: no
+    num_pings: no
+    uship: no
+    vship: no
+
+  # Point Sur VMP/CTD
+  HYDRO_PS: yes
+  HYDRO_PS_filepath: 'C:\Users\hildi\Documents\Stanford\Research\SUNRISE2022\testdata\SUNRISE2021_PE_HydroCombo_Processed.nc'
+  HYDRO_PS_variables:
+    DO2A: yes
+    DO2R: yes
+    Fl: yes
+    SA: yes
+    SP: yes
+    ToB: yes
+    Turbi: yes
+    dist: no
+    dn: yes
+    epsi: yes
+    lat: yes
+    lon: yes
+    sigma: yes
+    tau: yes
+    theta: yes
+    u_star: no
+    u_star_cint: no
+
+  # Point Sur FTMET
+  FTMET_PS: no
+  FTMET_PS_filepath: ''
+  FTMET_PS_variables:
+    t: yes
+    dn: yes # this is a derived variable not in the netcdf
+    longitude: yes
+    latitude: yes
+    headingGyro: yes
+    headingGPS: yes
+    waterDepth: yes
+    waterTemperature: yes
+    salinity: yes
+    conductivity: yes
+    speedOfSound: yes
+    chlorophyll: yes
+    fluorometer: yes
+    airTemp1: yes
+    airTemp2: no
+    airPressure1: yes
+    airPressure2: no
+    relHumidity1: yes
+    relHumidity2: no
+    windSpdRel1: yes
+    windSpdRel2: no
+    windDirRel1: yes
+    windDirRel2: no
+    shortWave: yes
+    longWave: yes
