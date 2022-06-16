@@ -6,8 +6,8 @@
   # for false
 
   # section definition files
-  PE_section_definition_filepath: ''
-  PS_section_definition_filepath: ''
+  PE_section_definition_filepath: 'C:\Users\hildi\Documents\Stanford\Research\SUNRISE2022\testdata\PE_section_definition.csv'
+  PS_section_definition_filepath: 'C:\Users\hildi\Documents\Stanford\Research\SUNRISE2022\testdata\PS_section_definition.csv'
 
   # Pelican 1200khz ADCP
   ADCP_PE_1200: yes
