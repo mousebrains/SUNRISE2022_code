@@ -1,6 +1,9 @@
 classdef sectionGenerator
 
   properties
+    % section definition files
+    PE_section_definition_filepath char
+    PS_section_definition_filepath char
     % Pelican ADCPs
     ADCP_PE_1200(1,1) logical
     ADCP_PE_1200_filepath char
@@ -137,13 +140,29 @@ classdef sectionGenerator
       fprintf('\nReady to generate sections\n')
     end %sectionGenerator
 
-    function output = load_section(obj,start_time,end_time)
+    function output = load_section(obj,start_time,end_time,ship)
 
       arguments
         obj
         start_time(1,:) datetime
         end_time(1,:) datetime
+        ship char = 'both'
       end
+
+      % check ship variable
+      switch ship
+        case {'PE','Pe','pe','Pelican','pelican'}
+          ship_match = '\w*(_PE)\w*';
+        case {'PS','Ps','ps','Point Sur','PointSur'}
+          ship_match = '\w*(_PS)\w*';
+        case 'both'
+          ship_match = '\w*[(_PE)(_PS)]\w*';
+        otherwise
+          error('UserError:UnrecognisedShip',['%s is not a valid ship name. Recognised ship names are:\n' ...
+            '\t''PE'', ''Pe'', ''pe'', ''Pelican'', ''pelican'',' ...
+             '''PS'', ''Ps'', ''ps'', ''Point Sur'', ''PointSur'', ''both'''],ship)
+      end
+
 
       % check start_time and end_time are the same size
       if size(start_time) ~= size(end_time)
@@ -168,7 +187,9 @@ classdef sectionGenerator
         for instrument = obj.implemented_instruments'
           try
             % check whether to load this instrument
+            if isempty(regexp(instrument,ship_match)); continue; end
             if ~obj.(instrument); continue; end
+
             cinstrument = char(instrument);
             filepath = obj.([cinstrument '_filepath']);
 

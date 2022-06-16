@@ -5,6 +5,10 @@
   # N.B. yes. on. True are aliases for true and no, off, False are aliases
   # for false
 
+  # section definition files
+  PE_section_definition_filepath: ''
+  PS_section_definition_filepath: ''
+
   # Pelican 1200khz ADCP
   ADCP_PE_1200: yes
   ADCP_PE_1200_filepath: 'C:\Users\hildi\Documents\Stanford\Research\SUNRISE2022\testdata\wh1200.nc'
