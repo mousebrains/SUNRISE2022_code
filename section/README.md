@@ -100,7 +100,7 @@ section =
 
 ## Loading a section by ID
 
-This is **not implemented yet** but there will be an option to load the sections using the survey name and section number defined in the section_definition csv files.
+There is a second method `SG.load_section_by_id(survey_name,section_number)` for loading sections. This method reads the start and end times out of the *section definition csv files* and uses them to generate a section. Obviously, for this to work the filepaths of the section definition files need to be set at the top of *sectionGeneratorDefaults.yml*. 
 
 # Setup
 
