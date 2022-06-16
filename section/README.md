@@ -2,13 +2,13 @@
 
 *sectionGenerator* is a matlab class for loading sections of ADCP, VMP/CTD (collectively called HYDRO), and FTMET data.
 
-## Usage
+# Usage
 
 First ensure that you have an up to date version of the **SUNRISE2022_code** directory and that it and its subfolders are on your matlab path. Then, we create an instance of the *sectionGenerator* class:
 
 `>> SG = sectionGenerator();`
 
-### Loading a section
+## Loading a section
 
 Now, we can load a section between two datetimes:
 
@@ -52,7 +52,7 @@ ans =
 
 ```
 
-### Loading multiple sections
+## Loading multiple sections
 
 Alternatively, you can load multiple sections at once by passing arrays of start and end times:
 
@@ -81,7 +81,7 @@ sections =
     HYDRO_PS
 ```
 
-### Ship argument
+## Ship argument
 
 `load_section` has an option third argument `ship` defaulting to `'both'`. Setting this to `'PE'` or `'PS'` will load the instruments from only that ship. e.g.
 
