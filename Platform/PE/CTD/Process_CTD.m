@@ -32,7 +32,7 @@ for i = proc_idx
         %RSKdespike %% should do it after see actual profile
         %RSKsmooth %% should do it after see actual profile
         [~,temp1] = min(abs(raw_mat.data.tstamp - raw_mat.data.tstamp(1) - 1/1440));
-        raw_mat = RSKderiveseapressure(raw_mat,'patm',nanmean(raw_mat.data.values(1:temp1,getchannelindex(raw_mat, 'Pressure'))));
+        raw_mat = RSKderiveseapressure(raw_mat,'patm',mean(raw_mat.data.values(1:temp1,getchannelindex(raw_mat, 'Pressure')),'omitnan'));
         raw_mat = RSKderivedepth(raw_mat,'latitude',lat_c);
         raw_mat = RSKderivevelocity(raw_mat);
         

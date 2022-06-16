@@ -7,10 +7,13 @@ Processed_Path = '../../../../data/Processed/';
 
 process_mat_path = dir(fullfile(Processed_Path, '**/*.*'));
 Processed_Path = [process_mat_path(1).folder '/'];
-process_mat_path = process_mat_path(startsWith({process_mat_path.name},'SUNRISE2021_') & endsWith({process_mat_path.name},'_Processed.mat'));
+process_mat_path = process_mat_path(startsWith({process_mat_path.name},'SUNRISE2022_') & endsWith({process_mat_path.name},'_Processed.mat'));
+
+text_str = regexp(process_mat_path(1).folder,'Processed','end')+2;
 
 for i = 1:length(process_mat_path)
-    nc_folder = [Processed_Path(1:end-1) '_NC/' process_mat_path(i).folder(37:end)];
+
+    nc_folder = [Processed_Path(1:end-1) '_NC/' process_mat_path(i).folder(text_str:end)];
     nc_path = [nc_folder '/' process_mat_path(i).name(1:end-3) 'nc'];
     mat_path = [process_mat_path(i).folder '/' process_mat_path(i).name];
     if ~exist(nc_folder,'dir')
