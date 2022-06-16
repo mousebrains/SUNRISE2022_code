@@ -25,6 +25,15 @@ Deployment_name = {'deploy_20210621'};
 
 chain_struct = BowChain_master(Prefix,Deployment_name,TCn_DATA_Path,TCn_GPS_Path);
 
+
+for i = 1:length(chain_struct)
+    chain_struct_save =   chain_struct(i) ;    
+    save([TCn_PROC_final_Path Prefix '_Tchain_' chain_struct_save.info.config.name '_Processed.mat'],'-struct','chain_struct_save','-v7.3')
+    chain_struct_save =   chain_struct(i) ;
+end
+
+
+
 return
 for i = 1:length(chain_struct)
     

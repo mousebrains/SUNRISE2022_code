@@ -37,7 +37,7 @@ for file_i = 1:length(Comb_mat_list)
         for z = 1:level
             mask = nan(size(ctd.depth));
             mask(ctd.depth >= (z-1) & ctd.depth < z) = 1;
-            temp3(z,:) = nanmean(mask.*temp);
+            temp3(z,:) = mean(mask.*temp,'omitnan');
         end
         temp3(temp3==0) = nan;
         
