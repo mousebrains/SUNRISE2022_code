@@ -42,8 +42,8 @@ switch cfg.bin_method
     end
 
     % Make lat & lon 1D
-    gridded.lat = nanmean(gridded.lat,1);
-    gridded.lon = nanmean(gridded.lon,1);
+    gridded.lat = mean(gridded.lat,1,'omitnan');
+    gridded.lon = mean(gridded.lon,1,'omitnan');
 
     % Remove 'pos' field (no longer makes sense)
     gridded = rmfield(gridded,'pos');
@@ -70,8 +70,8 @@ switch cfg.bin_method
     ln = ln(idx);
     % compute velocity
     wgs84 = referenceEllipsoid('wgs84','m');
-    lt0 = nanmean(lt);
-    ln0 = nanmean(ln);
+    lt0 = mean(lt);
+    ln0 = mean(ln,'omitnan');
     lt2y = distance('rh',lt0-0.5,ln0,lt0+0.5,ln0,wgs84); % meters N/S per deg N
     ln2x = distance('rh',lt0,ln0-0.5,lt0,ln0+0.5,wgs84); % meters E/W per deg W at lat lt0
     y  =  lt2y * (lt-lt0) ; % meters N/S

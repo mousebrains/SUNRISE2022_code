@@ -20,7 +20,7 @@ end
 % Subsample/interpolate all data onto intermediate time base
 for i = 1:length(data)
     % Determine interpolation method based on sampling period
-    perd_sens = nanmean(diff(data{i}.dn));
+    perd_sens = mean(diff(data{i}.dn),'omitnan');
     if perd_sens <= perd_base
         interp_method = 'nearest';
     else

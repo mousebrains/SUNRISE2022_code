@@ -75,7 +75,8 @@ if exist('Process_Mode','var')
             
             %%% loading Tchain Config and hook
             if ~exist(['./Cruise_' Prefix],'dir')
-                movefile('../../../toolbox/instrument/tchain/Cruise_template',['../../../toolbox/instrument/tchain/Cruise_' Prefix])
+                copyfile('../../../toolbox/instrument/tchain/ProcessingCode/Cruise_template',['./Cruise_' Prefix])
+                error('Write Config File')
             end
             addpath(genpath(['./Cruise_' Prefix]))
             
