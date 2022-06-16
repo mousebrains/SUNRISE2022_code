@@ -91,9 +91,9 @@ for i = proc_idx
             T2_0_def = str2double(setupstr(raw_mat.cfgobj, 'T2' , 't_0'));
             B2_0_def = str2double(setupstr(raw_mat.cfgobj, 'T2' , 'beta_1'));
             
-            if abs(T1_0-T1_0_def)>1e-3 || abs(B1_0_def- beta_T1(1)>1e-2) || abs(T2_0-T2_0_def)>1e-3 || abs(B2_0_def- beta_T2(1)>1e-2)
+            if abs(T1_0-T1_0_def)>1e-3 || abs(B1_0_def- beta_T1(1))>1e-2 || abs(T2_0-T2_0_def)>1e-3 || abs(B2_0_def- beta_T2(1))>1e-2
                 temp = raw_mat.setupfilestr;
-                if abs(T1_0-T1_0_def)>1e-3 || abs(B1_0_def- beta_T1(1)>1e-2)
+                if abs(T1_0-T1_0_def)>1e-3 || abs(B1_0_def- beta_T1(1))>1e-2
                     temp = regexprep(temp,sprintf('(SN(.){0,11}= %5s(((.|\\n){0,100})%7.3f))',char(setupstr(raw_mat.cfgobj, 'T1','SN')),str2double(setupstr(raw_mat.cfgobj, 'T1','T_0'))),...
                         sprintf(['SN          = %5s\n'...
                         'beta_1      = %7.2f\n'...
@@ -102,7 +102,7 @@ for i = proc_idx
                     fprintf(logid,'%19s %8s T1 Calibration T_0: %7.3f  Beta1: %7.2f   \n',datestr(now,'yyyy/mm/dd HH:MM:SS'),Raw_list(i).name,T1_0,beta_T1(1));
                     warning('Change T1 Calibration')
                 end
-                if  abs(T2_0-T2_0_def)>1e-3 || abs(B2_0_def- beta_T2(1)>1e-2)
+                if  abs(T2_0-T2_0_def)>1e-3 || abs(B2_0_def- beta_T2(1))>1e-2
                     temp = regexprep(temp,sprintf('(SN(.){0,11}= %5s(((.|\\n){0,100})%7.3f))',char(setupstr(raw_mat.cfgobj, 'T2','SN')),str2double(setupstr(raw_mat.cfgobj, 'T2','T_0'))),...
                         sprintf(['SN          = %5s\n'...
                         'beta_1      = %7.2f\n'...
@@ -171,6 +171,7 @@ for i = proc_idx
         hold off
         xlabel('time')
         ylabel('pressure')
+        warning('If the profile look good, Press enter.')
         pause
         close all
         
@@ -394,7 +395,7 @@ for i = proc_idx
             vmp_profile.lon(j) = vmp.lon;
             vmp_profile.dist_vmp(j) = vmp.dist_vmp;
             
-            if isstruct(BBL_info)
+            if bot_mod
                 vmp_profile.u_star(j) = BBL.u_star;
                 vmp_profile.u_star_cint(:,j) = BBL.u_star_cint;
                 vmp_profile.tau(j) = BBL.tau;
@@ -416,7 +417,7 @@ for i = proc_idx
                 for z = 1:level
                     mask = nan(size(vmp_profile.P_slow));
                     mask(vmp_profile.P_slow >= (z-1)*dz & vmp_profile.P_slow < z*dz) = 1;
-                    temp3(z,:) = nanmean(mask.*temp);
+                    temp3(z,:) = mean(mask.*temp,'omitnan');
                 end
                 temp3(temp3==0) = nan;
                 
@@ -425,7 +426,7 @@ for i = proc_idx
                 for z = 1:level
                     mask = nan(size(vmp_profile.P_fast));
                     mask(vmp_profile.P_fast >= (z-1)*dz & vmp_profile.P_fast < z*dz) = 1;
-                    temp3(z,:) = nanmean(mask.*temp);
+                    temp3(z,:) = mean(mask.*temp,'omitnan');
                 end
                 temp3(temp3==0) = nan;
                 
@@ -439,7 +440,7 @@ for i = proc_idx
                 for z = 1:level
                     mask = nan(size(vmp_profile.P_diss));
                     mask(vmp_profile.P_diss >= (z-1)*dz & vmp_profile.P_diss < z*dz) = 1;
-                    temp3(z,:) = nanmean(mask.*temp2);
+                    temp3(z,:) = mean(mask.*temp2,'omitnan');
                 end
                 temp3(temp3==0) = nan;
             end
