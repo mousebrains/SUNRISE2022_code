@@ -170,6 +170,7 @@ classdef sectionGenerator
       end
 
       Nsections = length(start_time);
+      if Nsections == 0; output = struct(); return; end
       output(Nsections) = struct();
 
       for ss = 1:Nsections
@@ -244,10 +245,16 @@ classdef sectionGenerator
 
           try
             % now retreive data
+            fprintf('Loading "%s" data\n',instrument)
+
             for fn = string(fieldnames(obj.([cinstrument '_variables'])))'
               % skip if we are not loading this data
               if ~logical(obj.([cinstrument '_variables']).(fn)); continue; end
 
+              %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+              %% TODO: this regexp elseif chain should be moved before looping %%
+              %% through the instrument variables as it doesn't not change     %%
+              %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
               if regexp(instrument,'^(ADCP_)\w*')
                 switch fn
                   case 'dn'
@@ -298,6 +305,56 @@ classdef sectionGenerator
       end % sections
 
     end %load_section
+
+    function output = load_section_by_id(obj,survey_name,section_number)
+
+      arguments
+        obj
+        survey_name char
+        section_number int8
+      end
+
+      % get the Pelican section
+      try
+        pelican_section_definitions = readtable(obj.PE_section_definition_filepath);
+        pe_row = strcmp(pelican_section_definitions.('survey_name'), survey_name) & pelican_section_definitions.('section_number') == section_number;
+        if ~isempty(pe_row)
+          pe_start_time = pelican_section_definitions{pe_row,'start_time'};
+          pe_end_time = pelican_section_definitions{pe_row,'end_time'};
+          pe_section = obj.load_section(pe_start_time,pe_end_time,'PE');
+        else
+          pe_section = struct();
+        end
+      catch ME
+        if strcmp(ME.identifier,'MATLAB:textio:textio:FileNotFound') || strcmp(ME.identifier,'MATLAB:textio:detectImportOptions:UnrecognizedExtension')
+          fprintf('\nWARNING: Error getting Pelican section definition file\n %s\n',ME.message)
+        else
+          rethrow(ME)
+        end
+      end
+
+      % get the Point Sur section
+      try
+        point_sur_section_definitions = readtable(obj.PS_section_definition_filepath);
+        ps_row = strcmp(point_sur_section_definitions.('survey_name'),survey_name) & point_sur_section_definitions.('section_number') == section_number;
+        if ~isempty(ps_row)
+          ps_start_time = point_sur_section_definitions{ps_row,'start_time'};
+          ps_end_time = point_sur_section_definitions{ps_row,'end_time'};
+          ps_section = obj.load_section(ps_start_time,ps_end_time,'PS');
+        else
+          ps_section = struct();
+        end
+      catch ME
+        if strcmp(ME.identifier,'MATLAB:textio:textio:FileNotFound') || strcmp(ME.identifier,'MATLAB:textio:detectImportOptions:UnrecognizedExtension')
+          fprintf('\nWARNING: Error getting Pelican section definition file\n %s\n',ME.message)
+          return
+        else
+          rethrow(ME)
+        end
+      end
+
+      output = catstruct(pe_section,ps_section);
+    end % load_section_by_id
 
   end %methods
 end %classdef
