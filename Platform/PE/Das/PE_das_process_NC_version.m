@@ -12,18 +12,13 @@ var_list = ncinfo(DAS_RAW_Path);
 
 for i = 1:length(var_list.Variables)
     temp = ncread(DAS_RAW_Path,var_list.Variables(i).Name);
-    
     eval(['das.' var_list.Variables(i).Name '= temp;'])
 end
 
 das.dn = das.t/86400 + datenum('1970/01/01 00:00:00','yyyy/mm/dd HH:MM:SS');
-das.lat = das.latitude;
-das.lon = das.longitude;
-das.C = das.conductivity;
-das.T = das.waterTemperature;
-das.SP = das.salinity;
+das.T = das.Temp;
 
-das = rmfield(das,{'t','latitude','longitude','conductivity','waterTemperature','salinity'});
+das = rmfield(das,{'t','Temp'});
 
 
 %% true heading
