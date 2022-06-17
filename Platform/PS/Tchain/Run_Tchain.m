@@ -8,7 +8,6 @@ Process_Mode = 'Tchain';
 data_path %% all data path and library
 
 %%%
-
 Deployment_name = {'deploy_20210621'};
 
 % 'all' for all deployments
@@ -24,6 +23,15 @@ Deployment_name = {'deploy_20210621'};
 % BowChain_master(Prefix)
 
 chain_struct = BowChain_master(Prefix,Deployment_name,TCn_DATA_Path,TCn_GPS_Path);
+
+copyfile('./Deployment_Info.csv',[TCn_DATA_Path 'Deployment_Info.csv']) % backup
+
+for i = 1:length(chain_struct)
+    chain_struct_save =   chain_struct(i) ;    
+    save([TCn_PROC_final_Path Prefix '_Tchain_' chain_struct_save.info.config.name '_Processed.mat'],'-struct','chain_struct_save','-v7.3')
+end
+
+
 
 return
 for i = 1:length(chain_struct)
