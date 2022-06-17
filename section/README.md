@@ -100,15 +100,15 @@ section =
 
 ## Loading a section by ID
 
-There is a second method `SG.load_section_by_id(survey_name,section_number)` for loading sections. This method reads the start and end times out of the *section definition csv files* and uses them to generate a section. Obviously, for this to work the filepaths of the section definition files need to be set at the top of *sectionGeneratorDefaults.yml*. 
+There is a second method `SG.load_section_by_id(survey_name,section_number)` for loading sections. This method reads the start and end times out of the *section definition csv files* and uses them to generate a section. For this to work the filepaths of the section definition files need to be set at the top of *sectionGeneratorDefaults.yml*. 
 
 # Setup
 
-This code will not run 'out of the box' because I am not psychic and don't know what the filepaths are on your laptop. You will need to set the filepaths to the netcdf files containing the data yourself.
+This code will most likely not run 'out of the box' because I am not psychic and don't know what the filepaths are on your laptop. You may need to set the filepaths to the netcdf files containing the data yourself.
 
 ## Setting the filepaths
 
-These file paths are defined in a *YAML* files called *sectionGeneratorDefaults.yml* which can be found in *SUNRISE2022_code/section* alongside this README and the *sectionGenerator.m* class file. Make a copy of this *YAML* file and place it in your working directory and change the filepaths to what every they need to be.
+These file paths are defined in a *YAML* file called *sectionGeneratorDefaults.yml* which can be found in *SUNRISE2022_code/section* alongside this README and the *sectionGenerator.m* class file. Make a copy of this *YAML* file and place it in your working directory and change the filepaths to what every they need to be.
 
 ## Selecting Instruments and Variables
 
@@ -219,6 +219,6 @@ It is possible to have multiple default files. The *sectionGenerator* constructo
 
 - [ ] Finalise the implementation of the FTMET netcdf once Pat has a confirmed the file structure
 - [ ] Adjust for the final version of Fucent's HYDRO files. Including confirming dimension ordering for *u_star_cint*.
-- [ ] Implement support for generating sections by survey name and number
+- [x] Implement support for generating sections by survey name and number
 - [ ] Change ADCP offset to 2022
 - [ ] Try and break it
