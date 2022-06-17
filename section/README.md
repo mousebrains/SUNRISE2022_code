@@ -6,7 +6,10 @@
 
 First ensure that you have an up to date version of the **SUNRISE2022_code** directory and that it and its subfolders are on your matlab path. Then, we create an instance of the *sectionGenerator* class:
 
-`>> SG = sectionGenerator();`
+```
+>> addpath(genpath('SUNRISE2022_code'));
+>> SG = sectionGenerator();
+```
 
 ## Loading a section
 
@@ -100,7 +103,7 @@ section =
 
 ## Loading a section by ID
 
-There is a second method `SG.load_section_by_id(survey_name,section_number)` for loading sections. This method reads the start and end times out of the *section definition csv files* and uses them to generate a section. For this to work the filepaths of the section definition files need to be set at the top of *sectionGeneratorDefaults.yml*. 
+There is a second method `SG.load_section_by_id(survey_name,section_number)` for loading sections. This method reads the start and end times out of the *section definition csv files* and uses them to generate a section. For this to work the filepaths of the section definition files need to be set at the top of *sectionGeneratorDefaults.yml*.
 
 # Setup
 
