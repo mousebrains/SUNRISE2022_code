@@ -6,12 +6,12 @@
   # for false
 
   # section definition files
-  PE_section_definition_filepath: 'C:\Users\hildi\Documents\Stanford\Research\SUNRISE2022\testdata\PE_section_definition.csv'
-  PS_section_definition_filepath: 'C:\Users\hildi\Documents\Stanford\Research\SUNRISE2022\testdata\PS_section_definition.csv'
+  PE_section_definition_filepath: './PE_section_definition.csv'
+  PS_section_definition_filepath: './PS_section_definition.csv'
 
   # Pelican 1200khz ADCP
   ADCP_PE_1200: yes
-  ADCP_PE_1200_filepath: 'C:\Users\hildi\Documents\Stanford\Research\SUNRISE2022\testdata\wh1200.nc'
+  ADCP_PE_1200_filepath: './../../data/Processed_NC/ADCP_UHDAS/SUNRISE2022_PE_wh1200_Processed.nc'
   ADCP_PE_1200_variables:
     trajectory: no
     time: yes
@@ -32,7 +32,7 @@
 
   # Pelican 600khz ADCP
   ADCP_PE_600: yes
-  ADCP_PE_600_filepath: 'C:\Users\hildi\Documents\Stanford\Research\SUNRISE2022\testdata\wh1200.nc'
+  ADCP_PE_600_filepath: './../../data/Processed_NC/ADCP_UHDAS/SUNRISE2022_PE_wh600_Processed.nc'
   ADCP_PE_600_variables:
     trajectory: no
     time: yes
@@ -53,7 +53,7 @@
 
   # Pelican 300khz ADCP
   ADCP_PE_300: yes
-  ADCP_PE_300_filepath: 'C:\Users\hildi\Documents\Stanford\Research\SUNRISE2022\testdata\wh1200.nc'
+  ADCP_PE_300_filepath: './../../data/Processed_NC/ADCP_UHDAS/SUNRISE2022_PE_wh300_Processed.nc'
   ADCP_PE_300_variables:
     trajectory: no
     time: yes
@@ -74,7 +74,7 @@
 
   # Pelican VMP/CTD
   HYDRO_PE: yes
-  HYDRO_PE_filepath: 'C:\Users\hildi\Documents\Stanford\Research\SUNRISE2022\testdata\SUNRISE2021_PE_HydroCombo_Processed.nc'
+  HYDRO_PE_filepath: './../../data/Processed_NC/HydroCombo/SUNRISE2022_PE_HydroCombo_Processed.nc'
   HYDRO_PE_variables:
     DO2A: yes
     DO2R: yes
@@ -96,7 +96,7 @@
 
   # Pelican FTMET
   FTMET_PE: yes
-  FTMET_PE_filepath: ''
+  FTMET_PE_filepath: './../../data/Processed_NC/ShipDas/SUNRISE2022_PE_ShipDas_Processed.nc'
   FTMET_PE_variables:
     t: yes
     dn: yes # this is a derived variable not in the netcdf
@@ -126,7 +126,7 @@
 
   # Point Sur 1200khz ADCP
   ADCP_PS_1200: yes
-  ADCP_PS_1200_filepath: 'C:\Users\hildi\Documents\Stanford\Research\SUNRISE2022\testdata\wh1200.nc'
+  ADCP_PS_1200_filepath: './../../data/Processed_NC/ADCP_UHDAS/SUNRISE2022_PS_wh1200_Processed.nc'
   ADCP_PS_1200_variables:
     trajectory: no
     time: yes
@@ -147,7 +147,7 @@
 
   # Point Sur 600khz ADCP
   ADCP_PS_600: yes
-  ADCP_PS_600_filepath: 'C:\Users\hildi\Documents\Stanford\Research\SUNRISE2022\testdata\wh1200.nc'
+  ADCP_PS_600_filepath: './../../data/Processed_NC/ADCP_UHDAS/SUNRISE2022_PS_wh600_Processed.nc'
   ADCP_PS_600_variables:
     trajectory: no
     time: yes
@@ -168,7 +168,7 @@
 
   # Point Sur 300khz ADCP
   ADCP_PS_300: yes
-  ADCP_PS_300_filepath: 'C:\Users\hildi\Documents\Stanford\Research\SUNRISE2022\testdata\wh1200.nc'
+  ADCP_PS_300_filepath: './../../data/Processed_NC/ADCP_UHDAS/SUNRISE2022_PS_wh300_Processed.nc'
   ADCP_PS_300_variables:
     trajectory: no
     time: yes
@@ -189,7 +189,7 @@
 
   # Point Sur VMP/CTD
   HYDRO_PS: yes
-  HYDRO_PS_filepath: 'C:\Users\hildi\Documents\Stanford\Research\SUNRISE2022\testdata\SUNRISE2021_PE_HydroCombo_Processed.nc'
+  HYDRO_PS_filepath: './../../data/Processed_NC/HydroCombo/SUNRISE2022_PS_HydroCombo_Processed.nc'
   HYDRO_PS_variables:
     DO2A: yes
     DO2R: yes
@@ -211,7 +211,7 @@
 
   # Point Sur FTMET
   FTMET_PS: no
-  FTMET_PS_filepath: ''
+  FTMET_PS_filepath: './../../data/Processed_NC/ShipDas/SUNRISE2022_PS_ShipDas_Processed.nc'
   FTMET_PS_variables:
     t: yes
     dn: yes # this is a derived variable not in the netcdf
