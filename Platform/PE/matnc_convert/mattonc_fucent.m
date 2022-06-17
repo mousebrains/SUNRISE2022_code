@@ -11,7 +11,7 @@ process_mat_path = process_mat_path(startsWith({process_mat_path.name},'SUNRISE2
 
 %%%
 %process_mat_path = process_mat_path(~contains({process_path.folder},'ADCP','Das','CTD','VMP')); %SUNRISE2022
-process_mat_path = process_mat_path(~contains({process_path.folder},'HydroCombo')); %SUNRISE2022
+process_mat_path = process_mat_path(contains({process_path.folder},'HydroCombo')); %SUNRISE2022
 %%%
 
 text_str = regexp(process_mat_path(1).folder,'Processed','end')+2;
