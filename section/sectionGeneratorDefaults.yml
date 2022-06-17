@@ -100,16 +100,16 @@
   FTMET_PE_variables:
     t: yes
     dn: yes # this is a derived variable not in the netcdf
-    longitude: yes
-    latitude: yes
-    headingGyro: yes
-    headingGPS: yes
-    waterDepth: yes
-    waterTemperature: yes
-    salinity: yes
-    conductivity: yes
+    lon: yes
+    lat: yes
+    heading: yes
+    true_heading: yes
+    depth: yes
+    Temp: yes
+    SP: yes
+    C: yes
     speedOfSound: yes
-    chlorophyll: yes
+    Fl: yes
     fluorometer: yes
     airTemp1: yes
     airTemp2: no
