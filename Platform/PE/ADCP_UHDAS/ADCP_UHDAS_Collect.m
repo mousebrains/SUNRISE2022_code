@@ -5,8 +5,8 @@ clear
 close all
 
 %%%
-ADCP_Project_name = '';
-ADCP_name = {'','',''};
+ADCP_Project_name = 'PE22_31_SHERAMAN';
+ADCP_name = {'wh300','wh600','wh1200'};
 
 %%% setting path and pre-loading files
 addpath('../_Config')
@@ -27,6 +27,4 @@ for i = 1:length(ADCP_name)
     ADCP_temp.uC =  ADCP_temp.u.*sind(true_heading) - ADCP_temp.v.*cosd(true_heading);
     
     save([ADCP_PROC_final_Path Prefix '_' ADCP_name{i} '_Processed.mat'],'-struct','ADCP_temp','-v7.3')
-    
-    
 end

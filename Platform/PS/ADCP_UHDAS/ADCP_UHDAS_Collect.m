@@ -5,8 +5,8 @@ clear
 close all
 
 %%%
-ADCP_Project_name = '';
-ADCP_name = {'','',''};
+ADCP_Project_name = 'PS22_23_MacKinnon';
+ADCP_name = {'wh1200','wh600','wh300'};
 
 %%% setting path and pre-loading files
 addpath('../_Config')

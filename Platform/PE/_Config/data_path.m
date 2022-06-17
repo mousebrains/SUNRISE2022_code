@@ -49,10 +49,20 @@ if exist('Process_Mode','var')
             addpath(genpath('../../../toolbox/general/gsw'))
             
         case 'ShipDas'
+        %%% normal procedure
+%             %% Das processing
+%             %%% Das Path
+%             DAS_RAW_Path = [datapath Process_Mode '/']; % raw das file
+%             DAS_PROC_final_Path = [Processed_Path Process_Mode '/']; % combine
+
+
+            %%% onboard procedure
             %% Das processing
             %%% Das Path
-            DAS_RAW_Path = [datapath Process_Mode '/']; % raw das file
+            %DAS_RAW_Path = [datapath Process_Mode '/']; % raw das file
+            DAS_RAW_Path = [Processed_Path(1:end-1) '_NC/' Process_Mode '/' Prefix '_ShipDas_Processed.nc']; % raw nc file
             DAS_PROC_final_Path = [Processed_Path Process_Mode '/']; % combine
+            
             
         case 'ADCP_UHDAS'
 
