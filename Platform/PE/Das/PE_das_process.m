@@ -6,8 +6,13 @@ close all
 addpath('../_Config')
 Process_Mode = 'ShipDas';
 data_path %% all data path and library
- DAS_RAW_Path = [datapath Process_Mode '/']; % raw das file
+
+DAS_RAW_Path = [datapath Process_Mode '/']; % raw das file
+copyfile('/Volumes/SCSServer4.9.1/DATALOG40/EventData/MIDAS/MIDAS_001.elg',[DAS_RAW_Path 'MIDAS_001.txt']);
+
 DAS = readtable([DAS_RAW_Path 'MIDAS_001.txt']);
+
+
 
 das.dn = datenum(DAS.Date+DAS.Time);
 
