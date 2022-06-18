@@ -70,7 +70,7 @@ classdef sectionGenerator
     ADCP_time_variables = {'time','lon','lat','heading','tr_temp','num_pings','uship','vship'}
     ADCP_depth_time_variables = {'depth','u','v','amp','pg','pflag'}
 
-    HYDRO_time_variables = {'ToB','dist','dn','lat','lon','tau','u_star'}
+    HYDRO_time_variables = {'dist','dn','lat','lon'}
     HYDRO_depth_time_variables = {'DO2A','DO2R','Fl','SA','SP','Turbi','epsi','sigma','theta'}
     % what about u_star_cint
     FTMET_time_variables = {'t','lon','lat','heading','true_heading','depth',...

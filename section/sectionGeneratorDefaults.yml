@@ -81,7 +81,7 @@
     Fl: yes
     SA: yes
     SP: yes
-    ToB: yes
+    ToB: no
     Turbi: yes
     dist: no
     dn: yes
@@ -89,7 +89,7 @@
     lat: yes
     lon: yes
     sigma: yes
-    tau: yes
+    tau: no
     theta: yes
     u_star: no
     u_star_cint: no
