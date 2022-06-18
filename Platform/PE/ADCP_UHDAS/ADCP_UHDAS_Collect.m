@@ -17,7 +17,7 @@ addpath('../_Config')
 Process_Mode = 'ADCP_UHDAS';
 data_path %% all data path and library
 
-ADCP_PROC_Path = ['/Volumes/homes/Science/PE22_31_Shearman/data/Platform/PE/ADCP_UHDAS/'];
+ADCP_PROC_Path = ['/Volumes/homes/Science/PE22_31_Shearman/data/Platform/PE/ADCP_UHDAS/PE22_31_Shearman_ADCP_1'];
 %%
 for i = 1:length(ADCP_name)
     

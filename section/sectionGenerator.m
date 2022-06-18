@@ -23,15 +23,12 @@ classdef sectionGenerator
     FTMET_PE_filepath char
     FTMET_PE_variables(1,1) struct
     % Point Sur ADCPs
-    ADCP_PS_1200(1,1) logical
-    ADCP_PS_1200_filepath char
-    ADCP_PS_1200_variables(1,1) struct
-    ADCP_PS_600(1,1) logical
-    ADCP_PS_600_filepath char
-    ADCP_PS_600_variables(1,1) struct
     ADCP_PS_300(1,1) logical
     ADCP_PS_300_filepath char
     ADCP_PS_300_variables(1,1) struct
+    ADCP_PS_sv500(1,1) logical
+    ADCP_PS_sv500_filepath char
+    ADCP_PS_sv500_variables(1,1) struct    
     % Point Sur VMP/CTD
     HYDRO_PS(1,1) logical
     HYDRO_PS_filepath char
@@ -46,7 +43,7 @@ classdef sectionGenerator
     implemented_instruments = [
                   "ADCP_PE_1200";"ADCP_PE_600";"ADCP_PE_300";
                   "HYDRO_PE"; "FTMET_PE";
-                  "ADCP_PS_1200";"ADCP_PS_600";"ADCP_PS_300";
+                  "ADCP_PS_300";"ADCP_PS_sv500";
                   "HYDRO_PS"; "FTMET_PS";
                 ]
   end
@@ -59,22 +56,21 @@ classdef sectionGenerator
     ADCP_PE_300_dn = []
     % hydro already has dn data
     FTMET_PE_dn = []
-    ADCP_PS_1200_dn = []
-    ADCP_PS_600_dn = []
     ADCP_PS_300_dn = []
+    ADCP_PS_sv500_dn = []    
     % hydro already has dn data
     FTMET_PS_dn = []
   end
 
   properties (Constant, Access = private)
     %change to 2022 for cruise
-    ADCP_time_offset = datetime(2021,1,1) % do we need  - days(1) here?
+    ADCP_time_offset = datetime(2022,1,1) % do we need  - days(1) here?
 
     ADCP_scalar_variables = {'trajectory'}
     ADCP_time_variables = {'time','lon','lat','heading','tr_temp','num_pings','uship','vship'}
     ADCP_depth_time_variables = {'depth','u','v','amp','pg','pflag'}
 
-    HYDRO_time_variables = {'ToB','dist','dn','lat','lon','tau','u_star'}
+    HYDRO_time_variables = {'dist','dn','lat','lon'}
     HYDRO_depth_time_variables = {'DO2A','DO2R','Fl','SA','SP','Turbi','epsi','sigma','theta'}
     % what about u_star_cint
     FTMET_time_variables = {'t','lon','lat','heading','true_heading','depth',...
