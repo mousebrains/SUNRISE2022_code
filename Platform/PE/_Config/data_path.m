@@ -63,12 +63,13 @@ if exist('Process_Mode','var')
             DAS_RAW_Path = [Processed_Path(1:end-1) '_NC/' Process_Mode '/' Prefix '_ShipDas_Processed.nc']; % raw nc file
             DAS_PROC_final_Path = [Processed_Path Process_Mode '/']; % combine
             
+            copyfile([datapath Process_Mode '/met.nc'],DAS_RAW_Path)
             
         case 'ADCP_UHDAS'
 
             ADCP_PROC_Path = [datapath Process_Mode '/' ADCP_Project_name '/proc/'];
             
-            ADCP_PROC_final_Path = [Processed_Path 'ADCP/']; % combine
+            ADCP_PROC_final_Path = [Processed_Path Process_Mode '/']; % combine
             
             ship = matfile([Processed_Path 'ShipDas/' Prefix '_ShipDas_Processed.mat']); %%% ship time/location
             
@@ -103,8 +104,13 @@ if exist('Process_Mode','var')
         case 'HydroCombo'
             Hydro_DATA_Path = [Processed_Path Process_Mode '/'];
             
-            vmp_combo = load([Processed_Path  'VMP/' Prefix '_VMP_Processed.mat']);
-            ctd_combo = load([Processed_Path  'CTD/' Prefix '_CTD_Processed.mat']);
+            if exist([Processed_Path  'VMP/' Prefix '_VMP_Processed.mat'],'file')
+                vmp_combo = load([Processed_Path  'VMP/' Prefix '_VMP_Processed.mat']);
+            end
+            
+            if exist([Processed_Path  'CTD/' Prefix '_CTD_Processed.mat'],'file')
+                ctd_combo = load([Processed_Path  'CTD/' Prefix '_CTD_Processed.mat']);
+            end            
             
         case 'PostProcessing'
             %% vmp processing
