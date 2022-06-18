@@ -6,15 +6,15 @@ close all
 addpath('../_Config')
 Process_Mode = 'ShipDas';
 data_path %% all data path and library
-
+ DAS_RAW_Path = [datapath Process_Mode '/']; % raw das file
 DAS = readtable([DAS_RAW_Path 'MIDAS_001.txt']);
 
 das.dn = datenum(DAS.Date+DAS.Time);
 
-latchar = string(DAS.ADU800_GGA_Lat);
+latchar = string(DAS.ABX2_GGA_Lat);
 das.lat = str2double(extractBetween(latchar(:),1,2)) + str2double(extractBetween(latchar(:),3,12))/60;
 
-lonchar = string(DAS.ADU800_GGA_Lon);
+lonchar = string(DAS.ABX2_GGA_Lon);
 das.lon = -(str2double(extractBetween(lonchar(:),1,3)) + str2double(extractBetween(lonchar(:),4,13))/60);
 
 
@@ -25,7 +25,7 @@ das.S = DAS.Thermosalinograph_Data_Salinity;
 das.cond = DAS.Thermosalinograph_Data_Conductivity;
 das.ssnd = DAS.Thermosalinograph_Data_Sound_Velocity;
 das.transm = DAS.Transmissometer_percent_DRV_VALUE;
-das.fluo = DAS.Wetstar_Flourometer_microgperL_DRV_VALUE;
+das.fluo = DAS.Wetstar_Fluorometer_ug_per_L_Chl_A_DRV_VALUE;
 das.SPARvolt = DAS.SPAR_Voltage_DRV_VALUE;
 das.SPARme = DAS.SPAR_Microeinsteins_DRV_VALUE;
 das.airT = DAS.Air_Temp_1;
