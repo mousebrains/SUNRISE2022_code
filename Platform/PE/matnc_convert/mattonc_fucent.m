@@ -11,7 +11,7 @@ process_mat_path = process_mat_path(startsWith({process_mat_path.name},'SUNRISE2
 
 %%%
 %process_mat_path = process_mat_path(~contains({process_path.folder},'ADCP','Das','CTD','VMP')); %SUNRISE2022
-process_mat_path = process_mat_path(contains({process_path.folder},'HydroCombo')); %SUNRISE2022
+process_mat_path = process_mat_path(contains({process_mat_path.folder},'HydroCombo')); %SUNRISE2022
 %%%
 
 text_str = regexp(process_mat_path(1).folder,'Processed','end')+2;
@@ -108,30 +108,30 @@ for i = 1:length(process_mat_path)
                     if dn_dim == 2
                         nccreate(nc_path,var_list(j).name, ...
                             'Dimensions',{'depth',depth_length,'dn',inf},...
-                            'Format','netcdf4','DeflateLevel',1)
+                            'Format','netcdf4')
                         ncwrite(nc_path,var_list(j).name,mat_data.(var_list(j).name))
                     else
                         nccreate(nc_path,var_list(j).name, ...
                             'Dimensions',{'dn',inf,'depth',depth_length},...
-                            'Format','netcdf4','DeflateLevel',1)
+                            'Format','netcdf4')
                     end
                     
                 elseif ~isempty(dn_dim)
                     if other_length==1
                         nccreate(nc_path,var_list(j).name, ...
                             'Dimensions',{'dn',inf},...
-                            'Format','netcdf4','DeflateLevel',1)
+                            'Format','netcdf4')
                         ncwrite(nc_path,var_list(j).name,mat_data.(var_list(j).name))
                     else
                         if dn_dim == 2
                             nccreate(nc_path,var_list(j).name, ...
                                 'Dimensions',{['other_' var_list(j).name],other_length,'dn',inf},...
-                                'Format','netcdf4','DeflateLevel',1)
+                                'Format','netcdf4')
                             ncwrite(nc_path,var_list(j).name,mat_data.(var_list(j).name))
                         else
                             nccreate(nc_path,var_list(j).name, ...
                                 'Dimensions',{'dn',inf,['other_' var_list(j).name],other_length},...
-                                'Format','netcdf4','DeflateLevel',1)
+                                'Format','netcdf4')
                             ncwrite(nc_path,var_list(j).name,mat_data.(var_list(j).name))
                         end
                     end
