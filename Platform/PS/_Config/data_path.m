@@ -67,7 +67,7 @@ if exist('Process_Mode','var')
 
             ADCP_PROC_Path = [datapath Process_Mode '/' ADCP_Project_name '/proc/'];
             
-            ADCP_PROC_final_Path = [Processed_Path 'ADCP/']; % combine
+            ADCP_PROC_final_Path = [Processed_Path Process_Mode '/']; % combine
             
             ship = matfile([Processed_Path 'ShipDas/' Prefix '_ShipDas_Processed.mat']); %%% ship time/location
             
