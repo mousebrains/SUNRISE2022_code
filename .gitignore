@@ -5,3 +5,8 @@
 .DS_Store
 *~
 .*~
+
+*.txt
+
+!PE_section_definition.csv
+!PS_section_definition.csv
