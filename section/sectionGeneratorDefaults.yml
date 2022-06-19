@@ -83,6 +83,7 @@
     SP: yes
     ToB: no
     Turbi: yes
+    depth: yes
     dist: no
     dn: yes
     epsi: yes
@@ -177,6 +178,7 @@
     SP: yes
     ToB: yes
     Turbi: yes
+    depth: yes
     dist: no
     dn: yes
     epsi: yes
