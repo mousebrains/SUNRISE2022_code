@@ -378,7 +378,7 @@ for i = proc_idx
                     vmp_profile.(diss_names{k})(:,j) = diss.(diss_names{k});
                 else
                     if  N_diss>size(vmp_profile.(diss_names{k}),1)
-                        vmp_profile.(diss_names{k})(size(vmp_profile.(diss_names{k}),2)+1:N_diss,:) = nan;
+                        vmp_profile.(diss_names{k})(size(vmp_profile.(diss_names{k}),1)+1:N_diss,:) = nan;
                     end
                     vmp_profile.(diss_names{k})(1:N_diss,j) = diss.(diss_names{k});
                     vmp_profile.(diss_names{k})(vmp_profile.(diss_names{k}) == 0) = nan;
