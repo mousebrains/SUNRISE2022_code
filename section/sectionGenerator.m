@@ -28,7 +28,7 @@ classdef sectionGenerator
     ADCP_PS_300_variables(1,1) struct
     ADCP_PS_sv500(1,1) logical
     ADCP_PS_sv500_filepath char
-    ADCP_PS_sv500_variables(1,1) struct    
+    ADCP_PS_sv500_variables(1,1) struct
     % Point Sur VMP/CTD
     HYDRO_PS(1,1) logical
     HYDRO_PS_filepath char
@@ -57,7 +57,7 @@ classdef sectionGenerator
     % hydro already has dn data
     FTMET_PE_dn = []
     ADCP_PS_300_dn = []
-    ADCP_PS_sv500_dn = []    
+    ADCP_PS_sv500_dn = []
     % hydro already has dn data
     FTMET_PS_dn = []
   end
@@ -71,6 +71,7 @@ classdef sectionGenerator
     ADCP_depth_time_variables = {'depth','u','v','amp','pg','pflag'}
 
     HYDRO_time_variables = {'dist','dn','lat','lon'}
+    HYDRO_depth_variables = {'depth'}
     HYDRO_depth_time_variables = {'DO2A','DO2R','Fl','SA','SP','Turbi','epsi','sigma','theta'}
     % what about u_star_cint
     FTMET_time_variables = {'t','lon','lat','heading','true_heading','depth',...
@@ -268,6 +269,8 @@ classdef sectionGenerator
                 switch fn
                   case obj.HYDRO_time_variables
                     output(ss).(cinstrument).(fn) = ncread(filepath,fn,[start_idx],[count_idx]);
+                  case obj.HYDRO_depth_variables
+                    output(ss).(cinstrument).(fn) = ncread(filepath,fn);
                   case obj.HYDRO_depth_time_variables
                     output(ss).(cinstrument).(fn) = ncread(filepath,fn,[1,start_idx],[inf,count_idx]);
                   otherwise
