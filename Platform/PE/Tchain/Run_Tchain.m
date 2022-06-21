@@ -7,8 +7,12 @@ addpath('../_Config')
 Process_Mode = 'Tchain';
 data_path %% all data path and library
 
+%%% Cannot Run RBR on NAS. So link those file.
+TCn_GPS_Path = [Processed_Path 'ShipDas/' Prefix '_ShipDas_Processed.mat']; %% path to Ship Das data.
+NAS_path = '/Volumes/homes/Science/PE22_31_Shearman'; %% path to NAS
+
 %%%
-Deployment_name = {'deploy_20210621'};
+Deployment_name = {'deploy_test'};
 
 % 'all' for all deployments
 % [] for the latest deployment
@@ -29,7 +33,24 @@ copyfile('./Deployment_Info.csv',[TCn_DATA_Path 'Deployment_Info.csv']) % backup
 for i = 1:length(chain_struct)
     chain_struct_save =   chain_struct(i) ;    
     save([TCn_PROC_final_Path Prefix '_Tchain_' chain_struct_save.info.config.name '_Processed.mat'],'-struct','chain_struct_save','-v7.3')
+    
+    %%%%move data back to NAS
+    %%% final mat-file
+    copyfile([TCn_PROC_final_Path Prefix '_Tchain_' chain_struct_save.info.config.name '_Processed.mat'],...
+        [NAS_path '/data/Processed/Tchain/' Platform '/' Prefix '_Tchain_' chain_struct_save.info.config.name '_Processed.mat'])
+    
+    %%% raw data folder
+    copyfile([datapath Process_Mode '/' chain_struct_save.info.config.name]...
+        ,[NAS_path '/data/Platform/' Platform '/Tchain/' chain_struct_save.info.config.name])
+    
+    %%% csv file
+    copyfile('./Deployment_Info.csv'...
+        ,[NAS_path '/code/Platform/' Platform '/Tchain/'])
+    copyfile('./Deployment_Info.csv'...
+        ,[NAS_path '/data/Platform/' Platform '/Tchain/' chain_struct_save.info.config.name])    
 end
+
+
 
 
 
