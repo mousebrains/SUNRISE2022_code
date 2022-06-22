@@ -10,3 +10,7 @@
 
 !PE_section_definition.csv
 !PS_section_definition.csv
+!./toolbox/instrument/rbr-rsktools/private/mksqlite.mexa64
+!./toolbox/instrument/rbr-rsktools/private/mksqlite.mexmaci64
+!./toolbox/instrument/rbr-rsktools/private/mksqlite.mexw32
+!./toolbox/instrument/rbr-rsktools/private/mksqlite.mexw64
