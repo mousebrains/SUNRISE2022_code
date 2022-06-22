@@ -17,7 +17,7 @@ process_mat_path = process_mat_path(contains({process_mat_path.folder},'HydroCom
 text_str = regexp(process_mat_path(1).folder,'Processed','end')+2;
 
 for i = 1:length(process_mat_path)
-
+    
     nc_folder = [Processed_Path(1:end-1) '_NC/' process_mat_path(i).folder(text_str:end)];
     nc_path = [nc_folder '/' process_mat_path(i).name(1:end-3) 'nc'];
     mat_path = [process_mat_path(i).folder '/' process_mat_path(i).name];
@@ -67,8 +67,8 @@ for i = 1:length(process_mat_path)
                     if ~isempty(dn_dim.*depth_dim)
                         if dn_dim == 2
                             ncwrite(nc_path,var_list(j).name,mat_data.(var_list(j).name),[1 old_dn_length+1])
-                        else                            
-                            ncwrite(nc_path,var_list(j).name,mat_data.(var_list(j).name),[old_dn_length+1 1])                            
+                        else
+                            ncwrite(nc_path,var_list(j).name,mat_data.(var_list(j).name),[old_dn_length+1 1])
                         end
                     elseif ~isempty(dn_dim)
                         if other_length==1
@@ -99,7 +99,6 @@ for i = 1:length(process_mat_path)
                 if isempty(depth_dim)
                     other_length = var_size;
                     other_length(dn_dim) = [];
-                    
                 else
                     other_length = [];
                 end
@@ -135,6 +134,11 @@ for i = 1:length(process_mat_path)
                             ncwrite(nc_path,var_list(j).name,mat_data.(var_list(j).name))
                         end
                     end
+                elseif ~isempty(depth_dim)
+                    nccreate(nc_path,var_list(j).name, ...
+                        'Dimensions',{'depth',depth_length,['other_' var_list(j).name],1},...
+                        'Format','netcdf4')
+                    ncwrite(nc_path,var_list(j).name,mat_data.(var_list(j).name))
                 end
                 
             else
