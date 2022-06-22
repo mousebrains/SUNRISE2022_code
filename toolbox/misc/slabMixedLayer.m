@@ -45,6 +45,6 @@ function [ U,V ] = slabMixedLayer(t,windSpeed,windDirection,params)
     theta = pi/2 - pi*windDirection/180;
     sin_integral = cumtrapz(t0,stress.*exp(r*t0).*sin(f*t0 + theta));
     cos_integral = cumtrapz(t0,stress.*exp(r*t0).*cos(f*t0 + theta));
-    U = exp(-r*t0).*cos(f*t0).*sin_integral + exp(-r*t0).*sin(f*t0).*sin_integral;
-    V = exp(-r*t0).*cos(f*t0).*cos_integral - exp(-r*t0).*sin(f*t0).*cos_integral;
+    U = exp(-r*t0).*cos(f*t0).*cos_integral + exp(-r*t0).*sin(f*t0).*sin_integral;
+    V = exp(-r*t0).*cos(f*t0).*sin_integral - exp(-r*t0).*sin(f*t0).*cos_integral;
 end
