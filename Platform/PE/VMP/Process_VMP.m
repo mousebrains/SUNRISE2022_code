@@ -311,7 +311,7 @@ for i = proc_idx
             %% VMP JAC&T1/T2
             vmp_names=[{'JAC_theta'};{'JAC_T'};{'JAC_C'};{'JAC_SP'};{'JAC_SA'};{'JAC_sigma'};{'JAC_rho'};...
                 {'T1_fast'};{'T2_fast'};{'T1_slow'};{'T2_slow'};{'gradT1'};{'gradT2'},;...
-                {'W_slow'};{'P_slow'};{'P_fast'}];
+                {'W_slow'};{'P_slow'};{'P_fast'};{'Incl_X'};{'Incl_Y'}];
             
             N_slow = length(pr_idx);
             N_fast = length(pr_idx_fast);
@@ -406,8 +406,8 @@ for i = proc_idx
         save([VMP_PROC_P_Combine_Path  Prefix '_raw_profile_combine' datestr(vmp_profile.dn(end),'yyyymmddHHMMSS') '.mat'],'vmp_profile')
         
         %% bin
-        vmp_names=[{'JAC_theta'};{'JAC_T'};{'JAC_C'};{'JAC_SP'};{'JAC_SA'};{'JAC_sigma'};{'JAC_rho'};{'e'};{'Chlorophyll'};{'Turbidity'}];
-        vmp_names_combo=[{'theta'};{'T'};{'C'};{'SP'};{'SA'};{'sigma'};{'rho'};{'epsi'};{'Fl'};{'Turbi'}]; %%% Unified Name for Project
+        vmp_names=[{'JAC_theta'};{'JAC_T'};{'JAC_C'};{'JAC_SP'};{'JAC_SA'};{'JAC_sigma'};{'JAC_rho'};{'e'};{'Chlorophyll'};{'Turbidity'};{'Incl_X'};{'Incl_Y'};{'W_slow'}];
+        vmp_names_combo=[{'theta'};{'T'};{'C'};{'SP'};{'SA'};{'sigma'};{'rho'};{'epsi'};{'Fl'};{'Turbi'};{'Incl_X'};{'Incl_Y'};{'W_slow'}]; %%% Unified Name for Project
         
         for k = 1:length(vmp_names)
             temp = vmp_profile.(vmp_names{k});
@@ -469,7 +469,7 @@ for i = proc_idx
             
             N_str = length(vmp_combo.dn)+1;
             
-            vmp_names_combo=[{'theta'};{'T'};{'C'};{'SP'};{'SA'};{'sigma'};{'rho'};{'epsi'};{'Fl'};{'Turbi'}]; %%% Unified Name for Project
+            vmp_names_combo=[{'theta'};{'T'};{'C'};{'SP'};{'SA'};{'sigma'};{'rho'};{'epsi'};{'Fl'};{'Turbi'};{'Incl_X'};{'Incl_Y'};{'W_slow'}]; %%% Unified Name for Project
             
             for k = 1:length(vmp_names_combo)
                 vmp_combo.(vmp_names_combo{k})(:,N_str:N_str-1+length(vmp_combo_temp.dn)) = vmp_combo_temp.(vmp_names_combo{k});
@@ -509,7 +509,7 @@ duplicate_idx = find(diff(vmp_combo.dn(idx_temp))==0);
 
 idx_temp(duplicate_idx) = [];
 
-vmp_names_combo=[{'theta'};{'T'};{'C'};{'SP'};{'SA'};{'sigma'};{'rho'};{'epsi'};{'Fl'};{'Turbi'}]; %%% Unified Name for Project
+vmp_names_combo=[{'theta'};{'T'};{'C'};{'SP'};{'SA'};{'sigma'};{'rho'};{'epsi'};{'Fl'};{'Turbi'};{'Incl_X'};{'Incl_Y'};{'W_slow'}]; %%% Unified Name for Project
 
 for k = 1:length(vmp_names_combo)
     vmp_combo.(vmp_names_combo{k}) = vmp_combo.(vmp_names_combo{k})(:,idx_temp);
