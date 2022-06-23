@@ -67,7 +67,7 @@ for i = proc_idx
     
     %% seperate profile
     try
-        profile_idx = get_profile(raw_mat.P_slow, raw_mat.W_slow, 0.5, 0.3, 'down', 10, raw_mat.fs_slow);
+        profile_idx = get_profile(raw_mat.P_slow, raw_mat.W_slow, 0.5, 0.3, 'down', 10, raw_mat.fs_slow); %% w threshold = 0.2 for SR2E1_0021
     catch
         profile_idx = [];
     end
