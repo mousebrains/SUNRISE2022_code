@@ -8,7 +8,11 @@ Process_Mode = 'ShipDas';
 data_path %% all data path and library
 
 DAS_RAW_Path = [datapath Process_Mode '/']; % raw das file
+
+
 copyfile('/Volumes/SCSServer4.9.1/DATALOG40/EventData/MIDAS/MIDAS_001.elg',[DAS_RAW_Path 'MIDAS_001.txt']);
+
+
 
 DAS = readtable([DAS_RAW_Path 'MIDAS_001.txt']);
 
@@ -26,11 +30,11 @@ das.lon = -(str2double(extractBetween(lonchar(:),1,3)) + str2double(extractBetwe
 das.heading_gyro = DAS.Sperry_MK1_Gyro_Hdg_deg;
 das.heading_GPS = DAS.Furuno_SC50_GPS_Hdg_Hdg;
 das.T = DAS.Thermosalinograph_Data_Temp;
-das.S = DAS.Thermosalinograph_Data_Salinity;
-das.cond = DAS.Thermosalinograph_Data_Conductivity;
+das.SP = DAS.Thermosalinograph_Data_Salinity;
+das.C = DAS.Thermosalinograph_Data_Conductivity;
 das.ssnd = DAS.Thermosalinograph_Data_Sound_Velocity;
 das.transm = DAS.Transmissometer_percent_DRV_VALUE;
-das.fluo = DAS.Wetstar_Fluorometer_ug_per_L_Chl_A_DRV_VALUE;
+das.Fl = DAS.Wetstar_Fluorometer_ug_per_L_Chl_A_DRV_VALUE;
 das.SPARvolt = DAS.SPAR_Voltage_DRV_VALUE;
 das.SPARme = DAS.SPAR_Microeinsteins_DRV_VALUE;
 das.airT = DAS.Air_Temp_1;
