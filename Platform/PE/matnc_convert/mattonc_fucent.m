@@ -52,6 +52,7 @@ for i = 1:length(process_mat_path)
         old_dn_length = old_dn_length.Dimensions.Length;
         
         if dn_length > old_dn_length
+            N_new = dn_length-old - dn_length;
             for j = 1:length(var_list)
                 var_size = var_list(j).size;
                 if ndims(var_size)<=2
@@ -66,18 +67,18 @@ for i = 1:length(process_mat_path)
                     
                     if ~isempty(dn_dim.*depth_dim)
                         if dn_dim == 2
-                            ncwrite(nc_path,var_list(j).name,mat_data.(var_list(j).name),[1 old_dn_length+1])
+                            ncwrite(nc_path,var_list(j).name,mat_data.(var_list(j).name)(:,old_dn_length+1:dn_length),[1 old_dn_length+1])
                         else
-                            ncwrite(nc_path,var_list(j).name,mat_data.(var_list(j).name),[old_dn_length+1 1])
+                            ncwrite(nc_path,var_list(j).name,mat_data.(var_list(j).name)(old_dn_length+1:dn_length,:),[old_dn_length+1 1])
                         end
                     elseif ~isempty(dn_dim)
                         if other_length==1
-                            ncwrite(nc_path,var_list(j).name,mat_data.(var_list(j).name),old_dn_length+1)
+                            ncwrite(nc_path,var_list(j).name,mat_data.(var_list(j).name)(old_dn_length+1:dn_length),old_dn_length+1)
                         else
                             if dn_dim == 2
-                                ncwrite(nc_path,var_list(j).name,mat_data.(var_list(j).name),[1 old_dn_length+1])
+                                ncwrite(nc_path,var_list(j).name,mat_data.(var_list(j).name)(:,old_dn_length+1:dn_length),[1 old_dn_length+1])
                             else
-                                ncwrite(nc_path,var_list(j).name,mat_data.(var_list(j).name),[old_dn_length+1 1])
+                                ncwrite(nc_path,var_list(j).name,mat_data.(var_list(j).name)(old_dn_length+1:dn_length,:),[old_dn_length+1 1])
                             end
                         end
                     end
