@@ -205,6 +205,7 @@ classdef sectionGenerator
             elseif regexp(instrument,'^(ADCP_)\w*')
               if isempty(obj.([cinstrument '_dn']))
                 time = ncread(filepath,'time');
+                time(time == 1e38) = NaN;
                 dn = datenum(obj.ADCP_time_offset + days(time));
                 obj.([cinstrument '_dn']) = dn;
               else
@@ -257,11 +258,17 @@ classdef sectionGenerator
                   case 'dn'
                     output(ss).(cinstrument).(fn) = obj.([cinstrument '_dn'])(start_idx:start_idx+count_idx-1);
                   case obj.ADCP_scalar_variables
-                    output(ss).(cinstrument).(fn) = ncread(filepath,fn);
+                    vardata = ncread(filepath,fn);
+                    vardata(vardata == 1e38) = NaN;
+                    output(ss).(cinstrument).(fn) = data;
                   case obj.ADCP_time_variables
-                    output(ss).(cinstrument).(fn) = ncread(filepath,fn,[start_idx],[count_idx]);
+                    vardata = ncread(filepath,fn,[start_idx],[count_idx]);
+                    vardata(vardata == 1e38) = NaN;
+                    output(ss).(cinstrument).(fn) = vardata;
                   case obj.ADCP_depth_time_variables
-                    output(ss).(cinstrument).(fn) = ncread(filepath,fn,[1,start_idx],[inf,count_idx]);
+                    vardata = ncread(filepath,fn,[1,start_idx],[inf,count_idx]);
+                    vardata(vardata == 1e38) = NaN;
+                    output(ss).(cinstrument).(fn) = vardata;
                   otherwise
                     fprintf('\nWARNING: Unknown variable "%s" for instrument "%s".\n',fn,instrument)
                 end % switch fn
