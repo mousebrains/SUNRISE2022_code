@@ -58,6 +58,9 @@ for i = proc_idx
     else
         try
             raw_mat = odas_p2mat([VMP_RAWP_Path Raw_list(i).name]);
+            if str2double(setupstr(raw_mat.cfgobj,'instrument_info','sn')) == 412
+                raw_mat.JAC_C = raw_mat.JAC_C-0.3;
+            end
             save([VMP_RAWM_Path Raw_list(i).name(1:end-2) '.mat'],'-struct','raw_mat','-v7.3')
             fprintf(logid,'%19s %8s Converting P-file.... \n',datestr(now,'yyyy mm/dd HH:MM:SS'),Raw_list(i).name);
         catch
@@ -153,6 +156,7 @@ for i = proc_idx
         %% Jac salinity lag cali. & Density
         %match JAC_T w/ JAC_C&FP07
         lag_JAC = dsearchn(xcorr(raw_mat.T1_slow,raw_mat.JAC_T,20,'normalized'),1)-21;
+        
         raw_mat.JAC_T = circshift(raw_mat.JAC_T,lag_JAC);
         
         raw_mat.JAC_SP = gsw_SP_from_C(raw_mat.JAC_C,raw_mat.JAC_T,raw_mat.P_slow);
